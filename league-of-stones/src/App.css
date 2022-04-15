@@ -11118,24 +11118,16 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-footer {
-  bottom: 0;
+#login, #signin {
+  margin: 7% auto auto;
+  width: 500px;
+  text-align: center;
 }
 
-.card.heroes {
-  width: 50%;
-  margin: auto;
-  transition: box-shadow 1s;
-  animation-name: slide;
-  animation-duration: 2s;
-}
-
-li {
-  display: inline-block;
-}
-
-.left-li {
-  text-align: right;
+#form {
+  margin: 2% auto auto;
+  width: 700px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=App.css.map */

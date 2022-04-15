@@ -1,17 +1,17 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+#login, #signin {
 
-footer {
-  bottom: 0;
+    margin: 7% auto auto;
+    width: 500px;
+    text-align: center;
+
 }
 
-.card.heroes {
-  width: 50%;
-  margin: auto;
-  transition: box-shadow 1s;
-  animation-name: slide;
-  animation-duration: 2s;
-}
-li {
-  display: inline-block;
+#form {
+
+    margin: 2% auto auto;
+    width: 700px;
+    text-align: center;
+
 }

@@ -4,7 +4,8 @@ function Signin() {
 
     const onSubmit = values => {
 
-        if(values.name === undefined || values.password === undefined || values.passwordConfirm === undefined) {
+        if(values.name === undefined || values.email === undefined
+            || values.password === undefined || values.passwordConfirm === undefined) {
 
             alert("Au moins un des champs est vide");
 
@@ -13,6 +14,10 @@ function Signin() {
             if(values.name.trim() === "") {
 
                 alert("Veuillez rentrer un pseudo");
+
+            } else if(values.email.trim() === "") {
+
+                alert("Veuillez rentrer un e-mail");
 
             } else if(values.password.trim() === "") {
 
@@ -28,7 +33,7 @@ function Signin() {
 
             } else {
 
-                const newVal = {"name": values.name, "email": values.name + "@l3.fr", "password": values.password};
+                const newVal = {"name": values.name, "email": values.email, "password": values.password};
                 fetch('http://localhost:3001/user', {
 
                     method: 'PUT',
@@ -39,14 +44,23 @@ function Signin() {
                     },
                     body: JSON.stringify(newVal),
 
-                }).then(response => response.json()).then(() => {
+                }).then(response => {
 
-                    document.querySelector("#form").innerHTML =
-                        "<h1>Votre compte à bien été créé</h1>"
+                    if(response.status === 409) {
 
-                }).catch((error) => {
+                        alert("Cet utilisateur existe déjà");
 
-                    console.error('Error:', error);
+                    } else {
+
+                        document.querySelector("#form").innerHTML =
+                            "<h1>Votre compte à bien été créé</h1>";
+                        document.querySelector("#signin").innerHTML = "";
+
+                    }
+
+                }).catch(error => {
+
+                    console.error('Error:', error.status);
 
                 });
 
@@ -63,8 +77,8 @@ function Signin() {
             onSubmit={onSubmit}
             render={({ handleSubmit }) => (
 
-                <div id="signin">
-                    <h1 id="titleForm">S'inscrire</h1>
+                <>
+                    <h1 id="signin">S'inscrire</h1>
                     <div className="container" id="form">
 
                         <form onSubmit={handleSubmit}>
@@ -76,8 +90,19 @@ function Signin() {
 
                                     name="name"
                                     component="input"
+                                    type="text"
                                     className="form-control"
                                     id="name"
+
+                                />
+                                <label htmlFor="email" className="form-label">E-mail</label>
+                                <Field
+
+                                    name="email"
+                                    component="input"
+                                    type="mail"
+                                    className="form-control"
+                                    id="email"
 
                                 />
                                 <label htmlFor="password" className="form-label">Mot de passe</label>
@@ -107,7 +132,7 @@ function Signin() {
                         </form>
 
                     </div>
-                </div>
+                </>
 
             )}
 
