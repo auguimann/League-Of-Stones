@@ -1,0 +1,17 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+footer {
+  bottom: 0;
+}
+
+.card.heroes {
+  width: 50%;
+  margin: auto;
+  transition: box-shadow 1s;
+  animation-name: slide;
+  animation-duration: 2s;
+}
+li {
+  display: inline-block;
+}
