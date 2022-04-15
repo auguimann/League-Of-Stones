@@ -3,7 +3,7 @@ import {Field, Form} from "react-final-form"
 function Login() {
     const onSubmit = values => {
 
-        const newVal = {"email": values.pseudo + "@l3.fr", "password": values.mdp};
+        const newVal = {"email": values.mail, "password": values.mdp};
         fetch ('http://localhost:3001/login', {
             method: 'POST',
             headers: {
@@ -17,7 +17,7 @@ function Login() {
             .catch((error) => {
 
                 console.error('Error:', error);
-                console.log(JSON.stringify(newVal))
+                console.log(newVal)
             });
 
     }
@@ -30,12 +30,12 @@ function Login() {
                 <div className="container" id="Form">
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label htmlFor="htmlFor" className="form-label">Pseudo</label>
+                            <label htmlFor="htmlFor" className="form-label">mail</label>
                             <Field
-                                name="pseudo"
+                                name="mail"
                                 component="input"
                                 className="form-control"
-                                id="pseudo"
+                                id="mail"
                             />
                             <label htmlFor="mdp" className="form-label">Mot de passe</label>
                             <Field
