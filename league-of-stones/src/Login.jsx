@@ -1,8 +1,25 @@
 import {Field, Form} from "react-final-form"
 
 function Login() {
-    const onSubmit = () => {
-        alert("test")
+    const onSubmit = values => {
+
+        const newVal = {"email": values.pseudo + "@l3.fr", "password": values.mdp};
+        fetch ('http://localhost:3001/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;'
+            },
+            body: JSON.stringify(newVal)
+        
+        })
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch((error) => {
+
+                console.error('Error:', error);
+                console.log(JSON.stringify(newVal))
+            });
+
     }
     return (
         <Form
