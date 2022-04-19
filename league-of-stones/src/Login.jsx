@@ -56,7 +56,7 @@ function Login(props) {
                 <div className="main">
 
                     <h1 id="login">Se connecter</h1>
-                    <div className="container" id="form">
+                    <div className="container-fluid" id="form">
 
                         <form onSubmit={handleSubmit}>
 
@@ -78,7 +78,7 @@ function Login(props) {
                                     id="mdp"
                                 />
                             </div>
-                            <button type="submit" className="btn btn-outline-danger">Connect</button>
+                            <button type="submit" className="btn btn-outline-danger">Connexion</button>
 
                         </form>
 

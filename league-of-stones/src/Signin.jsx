@@ -80,7 +80,7 @@ function Signin() {
                 <div className="main">
 
                     <h1 id="signin">S'inscrire</h1>
-                    <div className="container" id="form">
+                    <div className="container-fluid" id="form">
 
                         <form onSubmit={handleSubmit}>
 

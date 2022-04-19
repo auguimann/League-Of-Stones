@@ -76,7 +76,7 @@ function Account(props) {
                     render={({handleSubmit}) => (
 
                         <>
-                            <div className="container" id="gestion">
+                            <div className="container-fluid" id="gestion">
 
                                 <form onSubmit={handleSubmit}>
 
@@ -96,7 +96,7 @@ function Account(props) {
                     render={({handleSubmit}) => (
 
                         <>
-                            <div className="container" id="gestion">
+                            <div className="container-fluid" id="gestion">
 
                                 <form onSubmit={handleSubmit}>
 
