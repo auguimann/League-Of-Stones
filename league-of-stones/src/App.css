@@ -11118,15 +11118,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-#login, #signin {
-  margin: 7% auto auto;
-  width: 500px;
-  text-align: center;
+#logout {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  color: white !important;
 }
 
-#form {
-  margin: 2% auto auto;
-  width: 700px;
+.main {
+  margin: 50px 5%;
+  padding: 10px 10% 30px;
+  border-radius: 10px;
   text-align: center;
 }
 

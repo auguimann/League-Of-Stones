@@ -77,7 +77,8 @@ function Signin() {
             onSubmit={onSubmit}
             render={({ handleSubmit }) => (
 
-                <>
+                <div className="main">
+
                     <h1 id="signin">S'inscrire</h1>
                     <div className="container" id="form">
 
@@ -132,7 +133,8 @@ function Signin() {
                         </form>
 
                     </div>
-                </>
+
+                </div>
 
             )}
 

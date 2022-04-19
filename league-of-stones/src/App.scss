@@ -1,17 +1,19 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-#login, #signin {
+#logout {
 
-    margin: 7% auto auto;
-    width: 500px;
-    text-align: center;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    color: white!important;
 
 }
 
-#form {
+.main {
 
-    margin: 2% auto auto;
-    width: 700px;
+    margin: 50px 5%;
+    padding: 10px 10% 30px;
+    border-radius: 10px;
     text-align: center;
 
 }

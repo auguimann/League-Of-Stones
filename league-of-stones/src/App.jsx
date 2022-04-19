@@ -1,10 +1,27 @@
-import {BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom';
-import './App.css';
+import {useState} from 'react'
+import {BrowserRouter as Router, Routes, Route, Link, Redirect} from 'react-router-dom';
 import Login from './Login'
 import Signin from './Signin'
 import Main from './Main'
+import Account from "./Account";
+import './App.css';
 
 function App() {
+
+    const [token, setToken] = useState("");
+    const [email, setEmail] = useState("");
+
+    function updateToken(token) {
+
+        setToken(token);
+
+    }
+
+    function updateMail(email) {
+
+        setEmail(email)
+
+    }
 
     return (
 
@@ -31,6 +48,11 @@ function App() {
                                     <Link className="nav-link" to="/signin">S'inscrire</Link>
 
                                 </li>
+                                <li className="nav-item">
+
+                                    <Link className="nav-link btn btn-danger" id="logout" to="/account">Gestion du compte</Link>
+
+                                </li>
 
                             </ul>
 
@@ -41,9 +63,10 @@ function App() {
                 </nav>
                 <Routes>
 
-                    <Route path="/main" element={<Main/>} />
-                    <Route path="/login" element={<Login/>} />
-                    <Route path="/signin" element={<Signin/>}/>
+                    <Route path="/" element={<Main token={token}/>}/>
+                    <Route path="/login" element={<Login token={token} updateToken={updateToken} updateMail={updateMail}/>}/>
+                    <Route path="/signin" element={<Signin token={token}/>}/>
+                    <Route path="/account" element={<Account token={token} email={email} updateToken={updateToken} updateMail={updateMail}/>}/>
 
                 </Routes>
 
