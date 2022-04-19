@@ -80,58 +80,63 @@ function Signin() {
 
                 <div className="main">
 
-                    <h1 id="signin">S'inscrire</h1>
-                    <div className="container-fluid" id="form">
+                    <div id="formBG">
 
-                        <form onSubmit={handleSubmit}>
+                        <img src="league-of-stones/public/logo.png" alt="logo-los"/>
+                        <h1 id="signin">S'inscrire</h1>
+                        <div className="container-fluid" id="form">
 
-                            <div className="mb-3">
+                            <form onSubmit={handleSubmit}>
 
-                                <label htmlFor="name" className="form-label">Pseudo</label>
-                                <Field
+                                <div className="mb-3">
 
-                                    name="name"
-                                    component="input"
-                                    type="text"
-                                    className="form-control"
-                                    id="name"
+                                    <label htmlFor="name" className="form-label">Pseudo</label>
+                                    <Field
 
-                                />
-                                <label htmlFor="email" className="form-label">E-mail</label>
-                                <Field
+                                        name="name"
+                                        component="input"
+                                        type="text"
+                                        className="form-control"
+                                        id="name"
 
-                                    name="email"
-                                    component="input"
-                                    type="mail"
-                                    className="form-control"
-                                    id="email"
+                                    />
+                                    <label htmlFor="email" className="form-label">E-mail</label>
+                                    <Field
 
-                                />
-                                <label htmlFor="password" className="form-label">Mot de passe</label>
-                                <Field
+                                        name="email"
+                                        component="input"
+                                        type="mail"
+                                        className="form-control"
+                                        id="email"
 
-                                    name="password"
-                                    component="input"
-                                    type="password"
-                                    className="form-control"
-                                    id="password"
+                                    />
+                                    <label htmlFor="password" className="form-label">Mot de passe</label>
+                                    <Field
 
-                                />
-                                <label htmlFor="passwordConfirm" className="form-label">Confirmez votre mot de passe</label>
-                                <Field
+                                        name="password"
+                                        component="input"
+                                        type="password"
+                                        className="form-control"
+                                        id="password"
 
-                                    name="passwordConfirm"
-                                    component="input"
-                                    type="password"
-                                    className="form-control"
-                                    id="passwordConfirm"
+                                    />
+                                    <label htmlFor="passwordConfirm" className="form-label">Confirmez votre mot de passe</label>
+                                    <Field
 
-                                />
+                                        name="passwordConfirm"
+                                        component="input"
+                                        type="password"
+                                        className="form-control"
+                                        id="passwordConfirm"
 
-                            </div>
-                            <button type="submit" className="btn btn-outline-danger">Inscription</button>
+                                    />
 
-                        </form>
+                                </div>
+                                <button type="submit" className="btn btn-outline-danger">Inscription</button>
+
+                            </form>
+
+                        </div>
 
                     </div>
 
