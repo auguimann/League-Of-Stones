@@ -82,7 +82,7 @@ function Signin() {
 
                     <div id="formBG">
 
-                        <img src="league-of-stones/public/logo.png" alt="logo-los"/>
+                        <img src={require('./img/logo.png')} alt="logo-los"/>
                         <h1 id="signin">S'inscrire</h1>
                         <div className="container-fluid" id="form">
 
