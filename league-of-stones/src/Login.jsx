@@ -1,5 +1,6 @@
 import {Field, Form} from "react-final-form"
 import './Form.css'
+import './Login.css'
 
 function Login(props) {
 
@@ -54,35 +55,39 @@ function Login(props) {
             render={({ handleSubmit }) => (
 
                 <div className="main">
+                    <div className="login">
+                        <img width="10%" src={require('./img/logo.png')} alt="logo"/>
+                        <h1 id="login">Se connecter</h1>
+                        <div className="container-fluid" id="form">
 
-                    <h1 id="login">Se connecter</h1>
-                    <div className="container-fluid" id="form">
+                            <form onSubmit={handleSubmit}>
 
-                        <form onSubmit={handleSubmit}>
+                                <div className="mb-3">
 
-                            <div className="mb-3">
+                                    <label htmlFor="htmlFor" className="form-label">mail</label>
+                                    <Field
+                                        name="mail"
+                                        component="input"
+                                        className="form-control"
+                                        id="mail"
+                                    />
+                                    <label htmlFor="mdp" className="form-label">Mot de passe</label>
+                                    <Field
+                                        name="mdp"
+                                        component="input"
+                                        type="password"
+                                        className="form-control"
+                                        id="mdp"
+                                    />
+                                </div>
+                                <button type="submit" className="btn btn-danger">Connexion</button>
 
-                                <label htmlFor="htmlFor" className="form-label">mail</label>
-                                <Field
-                                    name="mail"
-                                    component="input"
-                                    className="form-control"
-                                    id="mail"
-                                />
-                                <label htmlFor="mdp" className="form-label">Mot de passe</label>
-                                <Field
-                                    name="mdp"
-                                    component="input"
-                                    type="password"
-                                    className="form-control"
-                                    id="mdp"
-                                />
-                            </div>
-                            <button type="submit" className="btn btn-outline-danger">Connexion</button>
+                            </form>
 
-                        </form>
-
+                        </div>    
                     </div>
+                    
+                    
 
                 </div>
 

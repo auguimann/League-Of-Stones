@@ -1,3 +1,4 @@
+import './Main.css'
 function Main(props) {
 
     if(props.token === "") {
@@ -5,9 +6,11 @@ function Main(props) {
         return (
 
             <div className="container-fluid main" id="accueil">
-
-                <h1>Bienvenue sur League of Stones</h1>
-                <h2>Cliquez sur les onglets en haut de la page pour vous connecter ou vous inscrire</h2>
+                <div className="main-page">
+                    <h1>Bienvenue sur League of Stones</h1>
+                    <h2>Cliquez sur les onglets en haut de la page pour vous connecter ou vous inscrire</h2>
+                </div>
+                
 
             </div>
 
@@ -18,10 +21,11 @@ function Main(props) {
         return (
 
             <div className="container-fluid main" id="accueil">
-
-                <h1>Bienvenue sur League of Stones</h1>
-                <button type="button" className="btn btn-danger">Démarrer un matchmaking</button>
-
+                <div className="main-page">
+                    <h1>Bienvenue sur League of Stones</h1>
+                    <button type="button" className="btn btn-danger">Démarrer un matchmaking</button>
+                </div>
+                
             </div>
 
         )
