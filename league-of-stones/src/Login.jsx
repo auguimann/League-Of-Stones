@@ -1,4 +1,4 @@
-import {Field, Form} from "react-final-form"
+import {Field, Form} from 'react-final-form'
 import './Form.css'
 import './Login.css'
 
@@ -55,7 +55,9 @@ function Login(props) {
             render={({ handleSubmit }) => (
 
                 <div className="main">
+
                     <div className="login">
+
                         <img width="10%" src={require('./img/logo.png')} alt="logo"/>
                         <h1 id="login">Se connecter</h1>
                         <div className="container-fluid" id="form">
@@ -64,7 +66,7 @@ function Login(props) {
 
                                 <div className="mb-3">
 
-                                    <label htmlFor="htmlFor" className="form-label mail">mail</label>
+                                    <label htmlFor="htmlFor" className="form-label mail">E-mail</label>
                                     <Field
                                         name="mail"
                                         component="input"
@@ -84,10 +86,9 @@ function Login(props) {
 
                             </form>
 
-                        </div>    
+                        </div>
+
                     </div>
-                    
-                    
 
                 </div>
 

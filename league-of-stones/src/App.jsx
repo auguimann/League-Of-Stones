@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {BrowserRouter as Router, Routes, Route, Link, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom';
 import Login from './Login'
 import Signin from './Signin'
 import Main from './Main'
@@ -38,22 +38,38 @@ function App() {
 
                             <ul className="navbar-nav">
 
-                                <li className="nav-item">
+                                {token === "" ?
 
-                                    <Link className="nav-link" to="/login">Se Connecter</Link>
+                                    <>
+                                    <li className="nav-item">
 
-                                </li>
-                                <li className="nav-item">
+                                        <Link className="nav-link" to="/login">Se Connecter</Link>
 
-                                    <Link className="nav-link" to="/signin">S'inscrire</Link>
+                                    </li>
+                                    <li className="nav-item">
 
-                                </li>
-                                <li className="nav-item">
+                                        <Link className="nav-link" to="/signin">S'inscrire</Link>
+
+                                    </li>
+                                    </>
+
+                                    :
+
+                                    <>
+                                    <li className="nav-item">
+
+                                        <Link className="nav-link" to="/matchmaking">Matchmaking</Link>
+
+                                    </li>
+                                    <li className="nav-item">
 
                                     <Link className="nav-link btn btn-danger" id="logout" to="/account">Gestion
-                                        du compte</Link>
+                                    du compte</Link>
 
-                                </li>
+                                    </li>
+                                    </>
+
+                                }
 
                             </ul>
 
@@ -63,28 +79,25 @@ function App() {
 
                 </nav>
                 <Routes>
+
                     <Route path="/" element={<Main token={token}/>}/>
+                    <Route path="/login" element={
 
-                    { token === "" &&
+                        token === "" ?
 
-                        <Route path="/login" element={<Login token={token}
-                             updateToken={updateToken} updateMail={updateMail}/>}/>
+                            <Login token={token} updateToken={updateToken} updateMail={updateMail}/>
+                            : <Navigate replace to="/"/>
 
-                        &&
-
-                        <Route path="/signin" element={<Signin token={token}/>}/>
-
-                    }
-                    <Route path="/login" element={<Login token={token}
-                         updateToken={updateToken} updateMail={updateMail}/>}/>
+                    }/>
                     <Route path="/signin" element={<Signin token={token}/>}/>
+                    <Route path="/account" element={
 
-                    { token !== "" &&
+                        token !== "" ?
 
-                        <Route path="/account" element={<Account token={token}
-                             email={email} updateToken={updateToken} updateMail={updateMail}/>}/>
+                            <Account token={token} email={email} updateToken={updateToken} updateMail={updateMail}/>
+                            : <Navigate replace to="/login"/>
 
-                    }
+                    }/>
 
                 </Routes>
 

@@ -1,5 +1,4 @@
 import {Form} from "react-final-form";
-import {Link} from "react-router-dom";
 import "./Account.css";
 
 function Account(props) {
@@ -65,76 +64,55 @@ function Account(props) {
 
     }
 
-    if(props.token !== "") {
+    return (
 
-        return (
+        <div className="main">
 
-            <div className="main">
+            <div className="account">
 
-                <div className="account">
+                <h1>Gestion du compte :</h1>
+                <Form
 
-                    <h1>Gestion du compte :</h1>
-                    <Form
+                    onSubmit={logout}
+                    render={({handleSubmit}) => (
 
-                        onSubmit={logout}
-                        render={({handleSubmit}) => (
+                        <div className="container-fluid">
 
-                            <div className="container-fluid">
+                            <form onSubmit={handleSubmit}>
 
-                                <form onSubmit={handleSubmit}>
+                                <button type="submit" id="accLogout" className="btn btn-danger">Déconnexion</button>
 
-                                    <button type="submit" id="accLogout" className="btn btn-danger">Déconnexion</button>
+                            </form>
 
-                                </form>
+                        </div>
 
-                            </div>
+                    )}
 
-                        )}
+                />
+                <Form
 
-                    />
-                    <Form
+                    onSubmit={rmAcc}
+                    render={({handleSubmit}) => (
 
-                        onSubmit={rmAcc}
-                        render={({handleSubmit}) => (
+                        <div className="container-fluid">
 
-                            <div className="container-fluid">
+                            <form onSubmit={handleSubmit}>
 
-                                <form onSubmit={handleSubmit}>
+                                <button type="submit" id="rmAcc" className="btn btn-danger">Supprimer mon compte</button>
 
-                                    <button type="submit" id="rmAcc" className="btn btn-danger">Supprimer mon compte</button>
+                            </form>
 
-                                </form>
+                        </div>
 
-                            </div>
+                    )}
 
-                        )}
-
-                    />
-
-                </div>
+                />
 
             </div>
 
-        );
+        </div>
 
-    } else {
-
-        return (
-
-            <div className="main">
-
-                <div className="account">
-
-                    <Link className="btn btn-danger" to="/login">Connexion</Link>
-                    <Link className="btn btn-danger" to="/signin">Créer mon compte</Link>
-
-                </div>
-
-            </div>
-
-        );
-
-    }
+    );
 
 }
 
