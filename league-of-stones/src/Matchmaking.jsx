@@ -1,119 +1,100 @@
-import React from 'react'
+import {useState} from 'react'
+import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom';
 
-class MatchakingTab extends React.Component{
+function Matchmaking(props) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            requests: []
-        };
-        this.interval = setInterval(
-            () => this.refresh(), 3000
-        );
+    const [request, setRequest] = useState([]);
+    const interval = setInterval(() => participate(), 3000)
+
+
+    const componentWillUnmount = () => {
+        clearInterval(interval)
     }
 
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+    const participate = () => {
+        const headers = new Headers();
+        headers.append("WWW-Authenticate", props.token);
+        headers.append("Content-type", "application/json");
 
-    requestAPlayer(e, index) {
-        e.preventDefault();
-        axios
-            .get(
-                SERVER_URL +
-                "/matchmaking/request?matchmakingId=" + this.props.matchmakingIds[index].matchmakingId + "&token=" + this.props.userReducer.userData.data.token
-            );
-    }
-
-    acceptRequest(e, index) {
-        e.preventDefault();
-        axios
-            .get(
-                SERVER_URL +
-                "/matchmaking/acceptRequest?matchmakingId=" + this.props.matchmakingIds[index].matchmakingId + "&token=" + this.props.userReducer.userData.data.token
-            );
-    }
-
-    allPlayers() {
-        if (this.props.type === "availablePlayers") {
-            let ret = [];
-            (this.props.players || []).map((player, index) => {
-                let defyButton = this.defyButton((player, index))
-                ret.push(
-                    <TableRow key={index}>
-                        <TableCell>{player}</TableCell>
-                        <TableCell onClick={(e) => this.requestAPlayer(e, index)}>{defyButton} </TableCell>
-                    </TableRow>
-                )
-            })
-            return ret
+        fetch ('http://localhost:3001/matchmaking/participate', {
+            method: 'GET',
+            headers: headers,
+        }).then(response => {
+            if(response.status === 500) {
+                alert("Vous avez déjà participé à un matchmaking");
+            } else {
+                return response.json()
+            }
+        }).then(response => {
+            console.log(response.matchmakingID)
+            // const request = response.request;
+            // setRequest(request);
         }
-        else {
-            let ret = [];
-            let cpt = 0
-            (this.state.requests || []).map((player, index) => {
-                cpt += 1
-                let defyButton = this.defyButton((player, index))
-                ret.push(
-                    <TableRow key={cpt}>
-                        <TableCell>{player.name}</TableCell>
-                        <TableCell onClick={() => this.acceptRequest(index)}>{defyButton} </TableCell>
-                    </TableRow>
-                )
-            })
-            return ret
+        ).catch(error => {
+            console.error('Error:', error.status);
         }
-    }
-
-    refresh() {
-        axios
-            .get(
-                SERVER_URL +
-                "/matchmaking/participate?token=" + this.props.userReducer.userData.data.token
-            )
-            .then(response => {
-                this.setState({
-                    requests: response.data.data.request
-                });
-            });
-    }
-
-    render() {
-        return (
-            <div>
-                <Paper>
-                    <Table>
-                        <TableHead>
-                            <TableCell>
-                                {this.props.title}
-                            </TableCell>
-                        </TableHead>
-                        <TableBody>
-                            {this.allPlayers()}
-                        </TableBody>
-                    </Table>
-                </Paper>
-                {/* {this.props.type === "challengeRequests" ?
-                    <Fab color="primary" aria-label="Add" onClick={() => this.refresh()}>
-                        <RefreshIcon />
-                    </Fab> : null
-                } */}
-            </div>
-
         )
     }
+
+    const requestAPlayer = () => {
+        const headers = new Headers();
+        headers.append("WWW-Authenticate", props.token);
+        headers.append("Content-type", "application/json");
+
+        fetch ('http://localhost:3001/matchmaking/request', {
+            method: 'GET',
+            headers: headers,
+        }).then(response => {
+            if(response.status === 500) {
+                alert("Vous avez déjà demandé à un matchmaking");
+            } else {
+                return response.json()
+            }
+        }).then(response => {
+            console.log(response)
+        }
+        ).catch(error => {
+            console.error('Error:', error.status);
+        }
+        )
+    }
+
+    const acceptRequest = (id) => {
+        const headers = new Headers();
+        headers.append("WWW-Authenticate", props.token);
+        headers.append("Content-type", "application/json");
+
+        fetch ('http://localhost:3001/matchmaking/acceptRequest', {
+            method: 'GET',
+            headers: headers,
+        }).then(response => {
+            if(response.status === 500) {
+                alert("Vous avez déjà accepté une demande");
+            } else {
+                return response.json()
+            }
+        }).then(response => {
+            console.log(response.player1.name)
+        }
+        ).catch(error => {
+            console.error('Error:', error.status);
+        }
+        )
+    }
+
+
+
+
+
+    return (
+        <div>
+        <h1>Matchmaking</h1>
+        <p>
+            This is the matchmaking page.
+            <button onClick={participate()}>BUTTON</button>
+        </p>
+        </div>
+    );
 }
 
-function mapStateToProps(state) {
-    return {
-        userReducer: state.userReducer
-    }
-}
-    
-function mapDispatchToProps(dispatch) {
-    return {
-        userActions: bindActionCreators(userActions, dispatch),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MatchakingTab)
+export default Matchmaking;
