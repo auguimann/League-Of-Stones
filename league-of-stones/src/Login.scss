@@ -8,23 +8,10 @@ body {
 
 .login {
     background: rgba(255, 255, 255, 0.5);
-    animation-name: slide;
-    animation-duration: 10s;
+    
     max-width: 70%;
     margin: auto;
     padding-top: 5%;
     padding-bottom: 5%;
     
-}
-
-@keyframes slide {
-    from {
-       left:-200%;
-    }
-
-    to {
-        left: 0%;
-    }
-   
-
 }

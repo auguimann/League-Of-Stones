@@ -64,23 +64,23 @@ function Login(props) {
 
                                 <div className="mb-3">
 
-                                    <label htmlFor="htmlFor" className="form-label">mail</label>
+                                    <label htmlFor="htmlFor" className="form-label mail">mail</label>
                                     <Field
                                         name="mail"
                                         component="input"
-                                        className="form-control"
+                                        className="form-control mail"
                                         id="mail"
                                     />
-                                    <label htmlFor="mdp" className="form-label">Mot de passe</label>
+                                    <label htmlFor="mdp" className="form-label mdp">Mot de passe</label>
                                     <Field
                                         name="mdp"
                                         component="input"
                                         type="password"
-                                        className="form-control"
+                                        className="form-control mdp"
                                         id="mdp"
                                     />
                                 </div>
-                                <button type="submit" className="btn btn-danger">Connexion</button>
+                                <button type="submit" className="btn btn-danger bouton">Connexion</button>
 
                             </form>
 
