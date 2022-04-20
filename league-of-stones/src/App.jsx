@@ -34,7 +34,7 @@ function App() {
                     <div className="container-fluid">
 
                         <Link className="navbar-brand" to="/">League of Stones</Link>
-                        <div className="collapse navbar-collapse" id="navbarNav">
+                        <div className="collapse navbar-collapse">
 
                             <ul className="navbar-nav">
 
@@ -50,7 +50,8 @@ function App() {
                                 </li>
                                 <li className="nav-item">
 
-                                    <Link className="nav-link btn btn-danger" id="logout" to="/account">Gestion du compte</Link>
+                                    <Link className="nav-link btn btn-danger" id="logout" to="/account">Gestion
+                                        du compte</Link>
 
                                 </li>
 
@@ -62,11 +63,28 @@ function App() {
 
                 </nav>
                 <Routes>
-
                     <Route path="/" element={<Main token={token}/>}/>
-                    <Route path="/login" element={<Login token={token} updateToken={updateToken} updateMail={updateMail}/>}/>
+
+                    { token === "" &&
+
+                        <Route path="/login" element={<Login token={token}
+                             updateToken={updateToken} updateMail={updateMail}/>}/>
+
+                        &&
+
+                        <Route path="/signin" element={<Signin token={token}/>}/>
+
+                    }
+                    <Route path="/login" element={<Login token={token}
+                         updateToken={updateToken} updateMail={updateMail}/>}/>
                     <Route path="/signin" element={<Signin token={token}/>}/>
-                    <Route path="/account" element={<Account token={token} email={email} updateToken={updateToken} updateMail={updateMail}/>}/>
+
+                    { token !== "" &&
+
+                        <Route path="/account" element={<Account token={token}
+                             email={email} updateToken={updateToken} updateMail={updateMail}/>}/>
+
+                    }
 
                 </Routes>
 

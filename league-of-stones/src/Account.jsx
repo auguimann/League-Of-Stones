@@ -1,5 +1,6 @@
 import {Form} from "react-final-form";
 import {Link} from "react-router-dom";
+import "./Account.css";
 
 function Account(props) {
 
@@ -69,48 +70,50 @@ function Account(props) {
         return (
 
             <div className="main">
-                <h1>Gestion du compte :</h1>
-                <Form
 
-                    onSubmit={logout}
-                    render={({handleSubmit}) => (
+                <div className="account">
 
-                        <>
-                            <div className="container-fluid" id="gestion">
+                    <h1>Gestion du compte :</h1>
+                    <Form
+
+                        onSubmit={logout}
+                        render={({handleSubmit}) => (
+
+                            <div className="container-fluid">
 
                                 <form onSubmit={handleSubmit}>
 
-                                    <button type="submit" className="btn btn-outline-danger">Déconnexion</button>
+                                    <button type="submit" id="accLogout" className="btn btn-danger">Déconnexion</button>
 
                                 </form>
 
                             </div>
-                        </>
 
-                    )}
+                        )}
 
-                />
-                <Form
+                    />
+                    <Form
 
-                    onSubmit={rmAcc}
-                    render={({handleSubmit}) => (
+                        onSubmit={rmAcc}
+                        render={({handleSubmit}) => (
 
-                        <>
-                            <div className="container-fluid" id="gestion">
+                            <div className="container-fluid">
 
                                 <form onSubmit={handleSubmit}>
 
-                                    <button type="submit" className="btn btn-outline-danger">Supprimer mon compte</button>
+                                    <button type="submit" id="rmAcc" className="btn btn-danger">Supprimer mon compte</button>
 
                                 </form>
 
                             </div>
-                        </>
 
-                    )}
+                        )}
 
-                />
-        </div>
+                    />
+
+                </div>
+
+            </div>
 
         );
 
@@ -120,10 +123,12 @@ function Account(props) {
 
             <div className="main">
 
-                <h2>Connectez-vous pour pouvoir gérer votre compte :</h2>
-                <Link className="btn btn-outline-danger" to="/login">Connexion</Link>
-                <h2>Si vous n'avez pas de compte, vous pouvez en créer un ici :</h2>
-                <Link className="btn btn-outline-danger" to="/signin">Créer mon compte</Link>
+                <div className="account">
+
+                    <Link className="btn btn-danger" to="/login">Connexion</Link>
+                    <Link className="btn btn-danger" to="/signin">Créer mon compte</Link>
+
+                </div>
 
             </div>
 

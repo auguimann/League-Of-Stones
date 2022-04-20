@@ -1,4 +1,5 @@
 import {Field, Form} from "react-final-form";
+import './Form.css';
 import './Signin.css';
 
 function Signin() {
@@ -80,10 +81,10 @@ function Signin() {
 
                 <div className="main">
 
-                    <div id="formBG">
+                    <div className="signin">
 
-                        <img src={require('./img/logo.png')} alt="logo-los"/>
-                        <h1 id="signin">S'inscrire</h1>
+                        <img width="10%" src={require('./img/logo.png')} alt="logo-los"/>
+                        <h1>S'inscrire</h1>
                         <div className="container-fluid" id="form">
 
                             <form onSubmit={handleSubmit}>
@@ -132,7 +133,7 @@ function Signin() {
                                     />
 
                                 </div>
-                                <button type="submit" className="btn btn-outline-danger">Inscription</button>
+                                <button type="submit" className="btn btn-danger">Inscription</button>
 
                             </form>
 
