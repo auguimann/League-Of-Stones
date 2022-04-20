@@ -91,7 +91,7 @@ function Matchmaking(props) {
         <h1>Matchmaking</h1>
         <p>
             This is the matchmaking page.
-            <button onClick={participate()}>BUTTON</button>
+            <button onClick={participate}>BUTTON</button>
         </p>
         </div>
     );
