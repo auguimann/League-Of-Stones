@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
 
 import './Partie.css'
-function Partie(props) {
+
+    let [cards, setState] = useState([])
 
     useEffect( () => {
 
@@ -9,7 +10,7 @@ function Partie(props) {
             .then(response => response.json())
             .then(data => {
 
-                //this.setState({cards: data});
+                //setState({cards: data});
                 console.log(data)
 
             }).catch(err => console.error(err));
@@ -17,13 +18,13 @@ function Partie(props) {
     })
     function addToTable(card) {
 
-        if(this.state.deck.length < 20) {
+        if(props.state.table.length < 20) {
 
-            let id = this.state.cards.indexOf(card);
-            this.state.deck.push(card);
-            this.setState({deck: this.state.deck});
-            this.state.cards.splice(id, 1);
-            this.setState({cards: this.state.cards});
+            let id = props.state.cards.indexOf(card);
+            props.state.table.push(card);
+            setState({table: props.state.table});
+            props.state.cards.splice(id, 1);
+            setState({cards: props.state.cards});
 
         } else {
 
@@ -34,27 +35,24 @@ function Partie(props) {
     }
      function rmFromTable(card) {
 
-        let id = this.state.deck.indexOf(card);
-        this.state.cards.push(card);
-        this.setState({cards: this.state.cards});
-        this.state.deck.splice(id, 1);
-        this.setState({deck: this.state.deck});
-        document.querySelector("#deckButton").innerHTML = "";
+        let id = props.state.table.indexOf(card);
+        props.state.cards.push(card);
+        setState({cards: props.state.cards});
+        props.state.table.splice(id, 1);
+        setState({table: props.state.table});
 
     }
-    const listCards = this.state.cards;
+    const listDeck = props.state.cards;
         const list = listCards.map(card => {
 
-            return <Card name={card.key} title={card.title} attack={card.info.attack}
-                         defense={card.info.defense} key={card._id} update={() => this.addToDeck(card)}/>;
+            <Card name={card.key} title={card.title} attack={card.info.attack} defense={card.info.defense} key={card._id} update={() => addToDeck(card)}/>;
 
         })
 
-        const deckCards = this.state.deck;
+        const listeTable = props.state.deck;
         const deck = deckCards.map(card => {
 
-            return <Card name={card.key} title={card.title} attack={card.info.attack}
-                         defense={card.info.defense} keyID={card._id} update={() => this.rmFromDeck(card)}/>;
+             <Card name={card.key} title={card.title} attack={card.info.attack} defense={card.info.defense} keyID={card._id} update={() => rmFromDeck(card)}/>;
 
         })
     return (
