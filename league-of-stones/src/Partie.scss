@@ -1,0 +1,31 @@
+.main-partie {
+
+    background-image:url(./img/terrain.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100%;
+}
+
+.col {
+    background: rgba(255, 255, 255, 0.75);
+    border: solid;
+    height: 15em;
+    
+}
+
+.card-on-table{
+    padding-top: 13em;
+    padding-bottom: 20em;
+}
+
+.card-deck {
+    padding-top: 13em;
+
+}
+
+.btn-deck {
+    padding-top : 12.5%;
+    padding-bottom : 12.5%;
+}
