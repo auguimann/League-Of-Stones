@@ -6,11 +6,6 @@ function Matchmaking(props) {
     const [request, setRequest] = useState([]);
     const interval = setInterval(() => participate(), 3000)
 
-
-    const componentWillUnmount = () => {
-        clearInterval(interval)
-    }
-
     const participate = () => {
         const headers = new Headers();
         headers.append("www-authenticate", props.token);
@@ -27,8 +22,8 @@ function Matchmaking(props) {
             }
         }).then(response => {
             console.log(response.matchmakingId)
-            // const request = response.request;
-            // setRequest(request);
+            const request = response.request;
+            setRequest(request);
         }
         ).catch(error => {
             console.error('Error:', error.status);
@@ -47,10 +42,9 @@ function Matchmaking(props) {
         }).then(response => {
             if(response.status === 500) {
                 alert("Vous n'avez pas participé à un matchmaking");
-                componentWillUnmount();
                 return response.json()
             } else {
-                componentWillUnmount();
+                clearInterval(interval)
                 return response.json()
             }
         }).catch(error => {
