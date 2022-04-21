@@ -1,0 +1,28 @@
+.card {
+  margin: 5px;
+  transition: box-shadow 200ms;
+  overflow: scroll;
+  background-color: #212529;
+  color: white;
+  height: 290px;
+}
+
+.card.heros {
+  animation-name: slide;
+  animation-duration: 1s;
+}
+
+@keyframes slide {
+  from {
+    left: -400%;
+  }
+  to {
+    left: 0;
+  }
+}
+.card.heros:hover {
+  box-shadow: 10px 5px 5px #2c3034;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=Card.css.map */
