@@ -112,14 +112,14 @@ function Matchmaking(props) {
 
 
     return (
-        <div>
-        <h1>Matchmaking</h1>
-        <p>
-            This is the matchmaking page.
-            <button id="start" onClick={participate}>Start</button>
-            <button id="stop" onClick={unparticipate}>Quit</button>
-            <div id="waiting"></div>
-        </p>
+        <div className="container-fluid matchmaking">
+            <div className="match">
+                <h1>Matchmaking</h1>
+                <p>This is the matchmaking page.</p>
+                <button className="btn btn-light btnMatch" onClick={participate}>Start</button>
+                <button className="btn btn-danger btnMatch" onClick={unparticipate}>Quit</button>
+                <div id="waiting"></div>
+            </div>
         </div>
     );
 }
