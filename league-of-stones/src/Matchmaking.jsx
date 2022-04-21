@@ -1,10 +1,14 @@
 import {useState} from 'react'
+import './Matchmaking.css'
 import {BrowserRouter as Router, Routes, Route, Link, Navigate} from 'react-router-dom';
+
+
 
 function Matchmaking(props) {
 
     const [request, setRequest] = useState([]);
-    const interval = setInterval(() => participate(), 3000)
+
+
 
     const participate = () => {
         const headers = new Headers();
@@ -18,10 +22,13 @@ function Matchmaking(props) {
             if(response.status === 500) {
                 alert("Vous avez déjà participé à un matchmaking");
             } else {
+                document.querySelector("#waiting").innerHTML = "Vous êtes en attente de matchmaking";
                 return response.json()
             }
         }).then(response => {
             console.log(response.matchmakingId)
+            console.log(response.request)
+
             //const request = response.request;
             //setRequest(request);
         }
@@ -40,13 +47,13 @@ function Matchmaking(props) {
             method: 'GET',
             headers: headers,
         }).then(response => {
-            if(response.status === 500) {
-                alert("Vous n'avez pas participé à un matchmaking");
-                return response.json()
-            } else {
-                clearInterval(interval)
-                
-                return response.json()
+            if(response.status === 200) {
+                document.querySelector("#waiting").innerHTML = "";
+                console.log("Vous n'êtes plus dans un matchmaking");
+            }
+
+            if (response.status === 500) {
+                alert("Vous n'êtes pas dans un matchmaking");
             }
         }).catch(error => {
             console.error('Error:', error.status);
@@ -109,8 +116,9 @@ function Matchmaking(props) {
         <h1>Matchmaking</h1>
         <p>
             This is the matchmaking page.
-            <button onClick={participate}>BUTTON</button>
-            <button onClick={unparticipate}>BUTTON</button>
+            <button id="start" onClick={participate}>Start</button>
+            <button id="stop" onClick={unparticipate}>Quit</button>
+            <div id="waiting"></div>
         </p>
         </div>
     );
