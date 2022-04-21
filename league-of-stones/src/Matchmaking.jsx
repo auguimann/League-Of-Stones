@@ -6,14 +6,9 @@ function Matchmaking(props) {
     const [request, setRequest] = useState([]);
     const interval = setInterval(() => participate(), 3000)
 
-
-    const componentWillUnmount = () => {
-        clearInterval(interval)
-    }
-
     const participate = () => {
         const headers = new Headers();
-        headers.append("WWW-Authenticate", props.token);
+        headers.append("www-authenticate", props.token);
         headers.append("Content-type", "application/json");
 
         fetch ('http://localhost:3001/matchmaking/participate', {
@@ -26,11 +21,34 @@ function Matchmaking(props) {
                 return response.json()
             }
         }).then(response => {
-            console.log(response.matchmakingID)
-            // const request = response.request;
-            // setRequest(request);
+            console.log(response.matchmakingId)
+            //const request = response.request;
+            //setRequest(request);
         }
         ).catch(error => {
+            console.error('Error:', error.status);
+        }
+        )
+    }
+
+    const unparticipate = () => {
+        const headers = new Headers();
+        headers.append("www-authenticate", props.token);
+        headers.append("Content-type", "application/json");
+
+        fetch ('http://localhost:3001/matchmaking/unparticipate', {
+            method: 'GET',
+            headers: headers,
+        }).then(response => {
+            if(response.status === 500) {
+                alert("Vous n'avez pas participé à un matchmaking");
+                return response.json()
+            } else {
+                clearInterval(interval)
+                
+                return response.json()
+            }
+        }).catch(error => {
             console.error('Error:', error.status);
         }
         )
@@ -91,7 +109,8 @@ function Matchmaking(props) {
         <h1>Matchmaking</h1>
         <p>
             This is the matchmaking page.
-            <button onClick={participate()}>BUTTON</button>
+            <button onClick={participate}>BUTTON</button>
+            <button onClick={unparticipate}>BUTTON</button>
         </p>
         </div>
     );

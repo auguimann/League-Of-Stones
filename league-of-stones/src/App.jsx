@@ -4,7 +4,7 @@ import Login from './Login'
 import Signin from './Signin'
 import Main from './Main'
 import Account from "./Account";
-import Partie from "./Partie";
+// import Partie from "./Partie";
 import './App.css';
 import Matchmaking from './Matchmaking';
 
@@ -106,7 +106,7 @@ function App() {
 
                     }/>
   
-                    <Route path="/Partie" element={<Partie token={token}/>}/>
+                    {/* <Route path="/Partie" element={<Partie token={token}/>}/> */}
                     <Route path="/account" element={
 
                         token !== "" ?
