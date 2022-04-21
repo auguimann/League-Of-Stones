@@ -4,7 +4,9 @@ import Login from './Login'
 import Signin from './Signin'
 import Main from './Main'
 import Account from "./Account";
+// import Partie from "./Partie";
 import './App.css';
+import Matchmaking from './Matchmaking';
 
 function App() {
 
@@ -67,6 +69,11 @@ function App() {
                                     du compte</Link>
 
                                     </li>
+                                    <li className="nav-item">
+
+                                    <Link className="nav-link btn btn-danger" id="Partie" to="/Partie">Partie</Link>
+
+                                    </li>
                                     </>
 
                                 }
@@ -90,6 +97,16 @@ function App() {
 
                     }/>
                     <Route path="/signin" element={<Signin token={token}/>}/>
+                    <Route path="/matchmaking" element={
+
+                        token !== "" ?
+
+                            <Matchmaking token={token}/>
+                            : <Navigate replace to="/"/>
+
+                    }/>
+  
+                    {/* <Route path="/Partie" element={<Partie token={token}/>}/> */}
                     <Route path="/account" element={
 
                         token !== "" ?
