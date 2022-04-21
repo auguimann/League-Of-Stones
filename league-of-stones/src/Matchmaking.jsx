@@ -22,8 +22,8 @@ function Matchmaking(props) {
             }
         }).then(response => {
             console.log(response.matchmakingId)
-            const request = response.request;
-            setRequest(request);
+            //const request = response.request;
+            //setRequest(request);
         }
         ).catch(error => {
             console.error('Error:', error.status);
@@ -45,6 +45,7 @@ function Matchmaking(props) {
                 return response.json()
             } else {
                 clearInterval(interval)
+                
                 return response.json()
             }
         }).catch(error => {
@@ -108,6 +109,7 @@ function Matchmaking(props) {
         <h1>Matchmaking</h1>
         <p>
             This is the matchmaking page.
+            <button onClick={participate}>BUTTON</button>
             <button onClick={unparticipate}>BUTTON</button>
         </p>
         </div>
