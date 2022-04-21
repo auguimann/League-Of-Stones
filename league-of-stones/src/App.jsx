@@ -6,6 +6,7 @@ import Main from './Main'
 import Account from "./Account";
 import './App.css';
 import Deck from "./Deck";
+import Matchmaking from "./Matchmaking";
 
 function App() {
 
@@ -96,6 +97,14 @@ function App() {
                         token !== "" ?
 
                             <Account token={token} email={email} updateToken={updateToken} updateMail={updateMail}/>
+                            : <Navigate replace to="/login"/>
+
+                    }/>
+                    <Route path="/matchmaking" element={
+
+                        token !== "" ?
+
+                            <Matchmaking token={token}/>
                             : <Navigate replace to="/login"/>
 
                     }/>

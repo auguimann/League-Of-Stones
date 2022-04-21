@@ -1,4 +1,5 @@
 import './Main.css'
+import {Link} from "react-router-dom";
 function Main(props) {
 
     if(props.token === "") {
@@ -23,7 +24,7 @@ function Main(props) {
             <div className="container-fluid main" id="accueil">
                 <div className="main-page">
                     <h1>Bienvenue sur League of Stones</h1>
-                    <button type="button" className="btn btn-danger">Démarrer un matchmaking</button>
+                    <Link className="btn btn-danger" to="/matchmaking">Matchmaking</Link>
                 </div>
                 
             </div>
