@@ -1,0 +1,23 @@
+.cards {
+  padding: 10px;
+  overflow: scroll;
+}
+
+.deck {
+  color: white;
+  padding: 10px;
+  background-color: #212529;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+}
+
+#deckHeader {
+  display: flex !important;
+}
+
+#deckButton {
+  position: absolute;
+  right: 0;
+}
+
+/*# sourceMappingURL=Deck.css.map */
